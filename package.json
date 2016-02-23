@@ -1,0 +1,13 @@
+{
+  "name": "Markdownify",
+  "version": "0.2.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "codemirror": "^5.11.0",
+    "marked": "^0.3.5",
+    "spell-checker": "0.0.26"
+  }
+}
