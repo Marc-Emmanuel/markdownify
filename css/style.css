@@ -300,3 +300,89 @@ a:hover {
         font-size: 0.9rem
     }
 }
+.CodeMirror-fullscreen {
+    top: 70px;
+}
+.editor-preview-side {
+    top: 70px;
+}
+.editor-toolbar.fullscreen::after {
+    width: 0;
+    height: 0;
+}
+.editor-toolbar.fullscreen::before {
+    width: 0;
+    height: 0;
+}
+.editor-toolbar.fullscreen {
+    top: 20px;
+    background: #ef5350;
+}
+.editor-toolbar {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.red-band {
+    height: 20px;
+    width: 100%;
+    background: #ef5350;
+}
+.editor-toolbar a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none!important;
+    color: white!important;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.editor-toolbar a:hover {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none!important;
+    color: white!important;
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #ff8a80;
+}
+.editor-toolbar a:active {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none!important;
+    color: white!important;
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #e53935;
+}
+a.active {
+    text-decoration: none!important;
+    background: #ff8a80;
+    border: none;
+    border-color: transparent;
+}
+.editor-toolbar a.active {
+    text-decoration: none!important;
+    background: #ff8a80;
+    border: none;
+    border-color: transparent;
+}
+:focus {
+    outline: none;
+}
+.editor-toolbar.disabled-for-preview a:not(.no-disable) {
+    pointer-events: none;
+    background: #ff8a80;
+    text-shadow: inherit;
+}

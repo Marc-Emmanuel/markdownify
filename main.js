@@ -10,7 +10,8 @@ var winSize = {
     width: 1170,
     height: 600,
     minHeight: 400,
-    minWidth: 400
+    minWidth: 400,
+    titleBarStyle:'hidden-inset'
 };
 
 var template = [
@@ -130,12 +131,24 @@ var template = [
                 label: 'Export...',
                 accelerator: 'Shift+CmdOrCtrl+E',
                 click: function () {
-                    var t = windows.filter(function (e) {
-                        return e.active;
+                    dialog.showSaveDialog({
+                        filters: [
+                            {
+                                name: 'HTML',
+                                extensions: ['html']
+                            }
+                        ]
+                    }, function (fileName) {
+                        if (fileName === undefined) {
+                            return;
+                        }
+                        var t = windows.filter(function (e) {
+                            return e.active;
+                        });
+                        if (t.length > 0) {
+                            t[0].webContents.send('export', fileName);
+                        }
                     });
-                    if (t.length > 0) {
-                        t[0].webContents.send('export', "export");
-                    }
                 }
             }
         ]
@@ -282,6 +295,7 @@ var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory)
 });
 var buildWindow = function () {
     var window = new BrowserWindow(winSize);
+    window.openDevTools();
     window.active = true;
     window.title = undefined;
     window.setFullScreenable(false);
@@ -344,7 +358,7 @@ ipc.on("edited", function (mess) {
         var arr = windows.filter(function (f) {
             return f.active
         });
-        
+
         arr[0].setDocumentEdited(true);
     }
 });
