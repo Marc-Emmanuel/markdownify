@@ -352,9 +352,11 @@ app.on('activate', function (event, hasVisibleWindows) {
             var arr = windows.filter(function (f) {
                 return f.active
             });
-            if (arr[0].isMinimized()) arr[0].restore();
-            arr[0].focus();
-            arr[0].active = true;
+            if (arr.length > 0) {
+                if (arr[0].isMinimized()) arr[0].restore();
+                arr[0].focus();
+                arr[0].active = true;
+            }
         }
     } else {
         var win = buildWindow();
