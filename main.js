@@ -5,15 +5,16 @@ const Menu = require('menu');
 const dialog = require('electron').dialog;
 const ipc = require('electron').ipcMain;
 
+var debug = false;
 var windows = [];
 var winSize = {
     width: 1170,
     height: 600,
     minHeight: 400,
     minWidth: 400,
-    titleBarStyle:'hidden-inset'
+    titleBarStyle: 'hidden-inset'
 };
-
+var fileToOpen = undefined;
 var template = [
     {
         label: 'File',
@@ -295,7 +296,9 @@ var shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory)
 });
 var buildWindow = function () {
     var window = new BrowserWindow(winSize);
-    window.openDevTools();
+    if (debug) {
+        window.openDevTools();
+    }
     window.active = true;
     window.title = undefined;
     window.setFullScreenable(false);
@@ -331,11 +334,21 @@ app.on('ready', function () {
     Menu.setApplicationMenu(m);
     var first = buildWindow();
     first.focus();
+    if (fileToOpen != undefined) {
+        first.title = fileToOpen.replace('/Users/', "");
+        first.webContents.on("did-finish-load", function () {
+            first.webContents.send('file', fileToOpen);
+            first.webContents.send('path', first.title);
+        });
+    }
+});
+app.on('open-file', function (event, path) {
+    event.preventDefault();
+    fileToOpen = path;
 });
 app.on('activate', function (event, hasVisibleWindows) {
     if (hasVisibleWindows) {
         if (windows.length > 0) {
-
             var arr = windows.filter(function (f) {
                 return f.active
             });
@@ -348,9 +361,6 @@ app.on('activate', function (event, hasVisibleWindows) {
         win.focus();
         win.active = true;
     }
-})
-app.on('open-file', function (event, path) {
-    event.preventDefault();
 });
 
 ipc.on("edited", function (mess) {
