@@ -785,8 +785,9 @@ var toolbarBuiltInButtons = {
 	"strikethrough": {
 		name: "strikethrough",
 		action: toggleStrikethrough,
-		className: "fa fa-strikethrough",
-		title: "Strikethrough"
+		className: "fa fa-strikethrough no-mobile",
+		title: "Strikethrough",
+        default: true
 	},
 	"heading": {
 		name: "heading",
@@ -824,20 +825,21 @@ var toolbarBuiltInButtons = {
 		action: toggleHeading3,
 		className: "fa fa-header fa-header-x fa-header-3",
 		title: "Small Heading"
-	},
+	},/*
 	"separator-1": {
 		name: "separator-1"
-	},
+	},*/
 	"code": {
 		name: "code",
 		action: toggleCodeBlock,
-		className: "fa fa-code",
-		title: "Code"
+		className: "fa fa-code no-mobile",
+		title: "Code",
+        default:true
 	},
 	"quote": {
 		name: "quote",
 		action: toggleBlockquote,
-		className: "fa fa-quote-left",
+		className: "fa fa-quote-left no-mobile",
 		title: "Quote",
 		default: true
 	},
@@ -858,16 +860,17 @@ var toolbarBuiltInButtons = {
 	"clean-block": {
 		name: "clean-block",
 		action: cleanBlock,
-		className: "fa fa-eraser fa-clean-block",
-		title: "Clean block"
+		className: "fa fa-eraser fa-clean-block no-mobile",
+		title: "Clean block",
+        default:true
 	},
-	"separator-2": {
+	/*"separator-2": {
 		name: "separator-2"
-	},
+	},*/
 	"link": {
 		name: "link",
 		action: drawLink,
-		className: "fa fa-link",
+		className: "fa fa-link no-mobile",
 		title: "Create Link",
 		default: true
 	},
@@ -881,18 +884,20 @@ var toolbarBuiltInButtons = {
 	"table": {
 		name: "table",
 		action: drawTable,
-		className: "fa fa-table",
-		title: "Insert Table"
+		className: "fa fa-table no-mobile",
+		title: "Insert Table",
+        default:true
 	},
 	"horizontal-rule": {
 		name: "horizontal-rule",
 		action: drawHorizontalRule,
-		className: "fa fa-minus",
-		title: "Insert Horizontal Line"
-	},
+		className: "fa fa-minus no-mobile",
+		title: "Insert Horizontal Line",
+        default:true
+	},/*
 	"separator-3": {
 		name: "separator-3"
-	},
+	},*/
 	"preview": {
 		name: "preview",
 		action: togglePreview,
@@ -912,21 +917,20 @@ var toolbarBuiltInButtons = {
 		action: toggleFullScreen,
 		className: "fa fa-arrows-alt no-disable no-mobile",
 		title: "Toggle Fullscreen",
-		default: true
-	},
+	},/*
 	"separator-4": {
 		name: "separator-4"
-	},
+	},*/
 	"guide": {
 		name: "guide",
 		action: "http://nextstepwebs.github.io/simplemde-markdown-editor/markdown-guide",
 		className: "fa fa-question-circle",
 		title: "Markdown Guide",
 		default: true
-	},
+	},/*
 	"separator-5": {
 		name: "separator-5"
-	},
+	},*/
 	"undo": {
 		name: "undo",
 		action: undo,
