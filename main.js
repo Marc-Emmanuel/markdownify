@@ -12,7 +12,7 @@ var winSize = {
     height: 600,
     minHeight: 400,
     minWidth: 400,
-    titleBarStyle: 'hidden-inset'
+    titleBarStyle: 'hidden'
 };
 var fileToOpen = undefined;
 var template = [
